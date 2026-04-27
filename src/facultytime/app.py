@@ -83,7 +83,7 @@ class FacultyTimeApp(tk.Tk):
             width=6,
             state="readonly",
         )
-        dur.grid(row=0, column=1, padx=(4, 16))
+        dur.grid(row=0, column=1, padx=(4, 16), sticky=tk.W)
 
         ttk.Label(opts, text="Search step (minutes):").grid(row=0, column=2, sticky=tk.W)
         self._step = tk.StringVar(value="30")
@@ -94,26 +94,25 @@ class FacultyTimeApp(tk.Tk):
             width=6,
             state="readonly",
         )
-        step.grid(row=0, column=3, padx=(4, 16))
+        step.grid(row=0, column=3, padx=(4, 16), sticky=tk.W)
 
         ttk.Label(opts, text="Day window:").grid(row=1, column=0, sticky=tk.W, pady=(6, 0))
         self._day_start = tk.StringVar(value="09:00")
         self._day_end = tk.StringVar(value="17:00")
         ttk.Entry(opts, textvariable=self._day_start, width=8).grid(
-            row=1, column=1, pady=(6, 0)
+            row=1, column=1, padx=(4, 16), pady=(6, 0), sticky=tk.W
         )
         ttk.Label(opts, text="–").grid(row=1, column=2, pady=(6, 0))
         ttk.Entry(opts, textvariable=self._day_end, width=8).grid(
-            row=1, column=3, pady=(6, 0)
+            row=1, column=3, padx=(4, 16), pady=(6, 0), sticky=tk.W
         )
-
         ttk.Label(opts, text="Show top:").grid(row=1, column=4, sticky=tk.W, padx=(16, 0), pady=(6, 0))
         self._top_n = tk.StringVar(value="25")
         ttk.Spinbox(opts, from_=5, to=100, textvariable=self._top_n, width=5).grid(
-            row=1, column=5, pady=(6, 0)
+            row=1, column=5, pady=(6, 0), sticky=tk.W
         )
 
-        btn_row = ttk.Frame(top)
+        btn_row = ttk.Frame(top, style="App.TFrame")
         btn_row.pack(fill=tk.X, pady=(8, 0))
         ttk.Button(
             btn_row,
